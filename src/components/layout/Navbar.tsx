@@ -103,7 +103,7 @@ export const Navbar = () => {
       {/* LEFT */}
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-2">
-          <div className="relative h-8 w-32">
+          {/* <div className="relative h-8 w-32">
             <Image
               src="/logo/logo-nav.png"
               alt="logo dbs"
@@ -111,7 +111,10 @@ export const Navbar = () => {
               className="object-contain"
               priority
             />
-          </div>
+          </div> */}
+          <h1 className="font-bold">
+            DBS STORE <span className="text-primary">MGV</span>
+          </h1>
         </Link>
       </div>
 

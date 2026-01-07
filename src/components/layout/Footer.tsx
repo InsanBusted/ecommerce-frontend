@@ -29,11 +29,12 @@ const Footer = () => {
             <Link href="/" className="flex items-center gap-2">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="font-display text-xl font-bold text-primary-foreground">
-                  M
+                  D
                 </span>
               </div>
               <span className="font-display text-xl font-bold text-foreground tracking-wide">
-                DBS STORE <span className="text-primary">OFFICIAL</span>
+                DBS STORE
+                <span className="text-primary"> OFFICIAL</span>
               </span>
             </Link>
 
@@ -123,7 +124,8 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
                 <span className="text-muted-foreground">
-                  1234 Rider Street, Motor City, MC 12345
+                  Jl. Otista Raya No. 29A, Kel. Bidara Cina, Kec. Jatinegara,
+                  Jakarta Timur, INDONESIA.
                 </span>
               </li>
 
@@ -143,7 +145,7 @@ const Footer = () => {
                   href="mailto:info@motoparts.com"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  info@motoparts.com
+                  info@dbsofficialstore.com
                 </a>
               </li>
             </ul>
@@ -166,7 +168,7 @@ const Footer = () => {
           "
         >
           <p className="text-muted-foreground text-sm text-center sm:text-left">
-            © 2024 MotoParts. All rights reserved.
+            © 2026 DBS BY MGV. All rights reserved.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 text-sm">
