@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import {
   LogInIcon,
-  Menu,
   MenuIcon,
   Search,
   ShoppingCart,
@@ -25,43 +24,47 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { CommandDialog, CommandInput } from "../ui/command";
+import Image from "next/image";
 
 const navigationItems = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Products",
-    href: "/",
-  },
-  {
-    label: "Orders",
-    href: "/",
-  },
+  { label: "Beranda", href: "/" },
+  { label: "Produk", href: "/" },
+  { label: "Order", href: "/" },
 ];
 
 const NavigationSheet = () => {
   return (
     <Sheet>
-      <SheetTrigger>
-        <Button size={"icon"} variant={"ghost"} className="lg:hidden">
+      <SheetTrigger asChild>
+        <Button size="icon" variant="ghost" className="lg:hidden">
           <MenuIcon />
         </Button>
       </SheetTrigger>
+
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>Navigation</SheetTitle>
         </SheetHeader>
 
-        <div className="px-4 grid grid-cols-1 gap-6">
+        <div className="mt-6 flex flex-col gap-4 px-4">
           {navigationItems.map((item) => (
-            <Link key={item.label} href={item.href}>
+            <Link
+              key={item.label}
+              href={item.href}
+              className="text-sm font-medium"
+            >
               {item.label}
             </Link>
           ))}
-          <Link href={"/login"}>Sign In</Link>
-          <Link href={"/register"}>Sign Up</Link>
+
+          <hr className="my-2" />
+
+          <Link href="/login" className="text-sm font-medium">
+            Sign In
+          </Link>
+          <Link href="/register" className="text-sm font-medium">
+            Sign Up
+          </Link>
         </div>
       </SheetContent>
     </Sheet>
@@ -74,12 +77,12 @@ type SearchCommandDialogProps = {
 };
 
 const SearchCommandDialog = ({
-  onOpenChange,
   open,
+  onOpenChange,
 }: SearchCommandDialogProps) => {
   return (
     <CommandDialog open={open} onOpenChange={onOpenChange}>
-      <CommandInput placeholder="Search Products..." />
+      <CommandInput placeholder="Cari Produk..." />
     </CommandDialog>
   );
 };
@@ -91,71 +94,79 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        "bg-background/50 backdrop-blur-md",
-        "sticky top-0 z-50",
-        "w-full border-b h-16 py-2 px-8",
-        "flex items-center justify-between"
+        "sticky top-0 z-50 w-full ",
+        "border-b bg-background/70 backdrop-blur-md",
+        "h-16 px-4 lg:px-8",
+        "flex items-center"
       )}
     >
-      {/* left side */}
-      <div className="flex items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2">
-            <ShoppingCart className="text-primary" />
-            <h1 className="text-xl font-bold">DBS STORE</h1>
-          </Link>
-        </div>
-
-        <div className="font-medium gap-4 text-sm hidden lg:flex">
-          {navigationItems.map((item) => (
-            <Link key={item.label} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </div>
-
-        <div className="hidden lg:flex font-medium gap-4 text-sm">
-          <Link href={"/"}>Home</Link>
-          <Link href={"/"}>Products</Link>
-          <Link href={"/"}>Orders</Link>
-        </div>
+      {/* LEFT */}
+      <div className="flex items-center gap-4">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="relative h-8 w-32">
+            <Image
+              src="/logo/logo-nav.png"
+              alt="logo dbs"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </Link>
       </div>
 
-      {/* right side */}
-      <div className="flex items-center gap-4">
-        <InputGroup className="w-80 hidden lg:flex">
+      {/* CENTER MENU (DESKTOP ONLY) */}
+      <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium">
+        {navigationItems.map((item) => (
+          <Link
+            key={item.label}
+            href={item.href}
+            className="hover:text-primary transition-colors"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+
+      {/* RIGHT */}
+      <div className="ml-auto flex items-center gap-2 lg:gap-4">
+        {/* Search Desktop */}
+        <InputGroup className="hidden lg:flex w-72">
           <InputGroupAddon>
             <Search className="text-primary" />
           </InputGroupAddon>
-
           <InputGroupInput placeholder="Search products..." />
         </InputGroup>
 
+        {/* Search Mobile */}
         <Button
           onClick={() => setSearchCommandDialogIsOpen(true)}
-          size={"icon"}
-          variant={"ghost"}
+          size="icon"
+          variant="ghost"
           className="lg:hidden"
         >
           <Search />
         </Button>
 
+        {/* Cart */}
         <Button size="icon" variant="ghost">
           <ShoppingCart />
         </Button>
 
+        {/* Mobile Menu */}
         <NavigationSheet />
 
-        <div className=" items-center gap-2 justify-between hidden lg:flex">
-          <Link href={"/login"}>
-            <Button variant="ghost">
+        {/* Auth Desktop */}
+        <div className="hidden lg:flex items-center gap-2">
+          <Link href="/login">
+            <Button variant="ghost" size="sm">
               <LogInIcon />
               Sign In
             </Button>
           </Link>
 
-          <Link href={"/register"}>
-            <Button>
+          <Link href="/register">
+            <Button size="sm">
               <UserRoundPlus />
               Sign Up
             </Button>
