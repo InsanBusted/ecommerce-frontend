@@ -121,7 +121,7 @@ const Footer = () => {
               Contact Us
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
+              {/* <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5" />
                 <span className="text-muted-foreground">
                   Jl. Otista Raya No. 29A, Kel. Bidara Cina, Kec. Jatinegara,
@@ -137,7 +137,7 @@ const Footer = () => {
                 >
                   (123) 456-7890
                 </a>
-              </li>
+              </li> */}
 
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary" />

@@ -118,11 +118,11 @@ export const Navbar = () => {
         </Link>
       </div>
 
-      {/* CENTER MENU (DESKTOP ONLY) */}
+      {/* CENTER MENU  */}
       <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium">
         {navigationItems.map((item) => (
           <Link
-            key={item.label}
+            key={item.label}                                                                                          
             href={item.href}
             className="hover:text-primary transition-colors"
           >
